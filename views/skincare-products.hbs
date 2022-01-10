@@ -4,24 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>All Skincare Products</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-
-    <a href="/">Home</a>
-    <a href="/skincare-products">Skincare Products</a>
-
-    <h1>View All Skincare Products</h1>
-
-    <a href="/skincare-products/add">Add new product</a>
-
-    <ol>
-
-        {{#each skincareProducts}}
-            <li>{{this.productName}}</li>
-        {{/each}}
-    
-    </ol>
+    <div class="container">
         
+        <nav>
+            <a href="/">Home</a>
+            <a href="/skincare-products">Skincare Products</a>
+        </nav>
+
+        <section>
+            <h1>View All Skincare Products</h1>
+
+            <a href="/skincare-products/add">Add new product</a>
+
+            <ol>
+
+                {{#each skincareProducts}}
+                    <li><b>{{this.productBrand}}</b> {{this.productName}} <a href="/skincare-products/{{this._id}}/edit">Edit</a></li>
+                {{/each}}
+            
+            </ol>
+        </section>
+
+    </div>    
 </body>
 </html>

@@ -14,6 +14,7 @@ app.use(express.urlencoded({
 
 require('dotenv').config();
 
+const ObjectId = require('mongodb').ObjectId;
 const MongoUtil = require('./MongoUtil');
 const {ReadPreferenceMode} = require('mongodb');
 
@@ -48,14 +49,48 @@ app.get('/skincare-products/add', function(req,res){
 app.post('/skincare-products/add', async function(req,res){
     
     // let {productName} = req.body;
+    let productBrand = req.body.productBrand;
     let productName = req.body.productName;
 
     let productToAdd = {
+        'productBrand': productBrand,
         'productName': productName
     };
 
     const db = MongoUtil.getDB();
     await db.collection('skincare_products').insertOne(productToAdd);
+    res.redirect('/skincare-products');
+})
+
+app.get('/skincare-products/:id/edit', async function(req,res){
+
+    let id = req.params.id;
+    const db = MongoUtil.getDB();
+    let productToEdit = await db.collection('skincare_products').findOne({
+        '_id': ObjectId(id)
+    })
+
+    res.render('edit-skincare-product',{
+        'skincareProduct': productToEdit
+    });
+})
+
+app.post('/skincare-products/:id/edit', async function(req,res){
+
+    let id = req.params.id;
+    const db = MongoUtil.getDB();
+
+    let updateProductInfo = {
+        'productBrand': req.body.productBrand,
+        'productName': req.body.productName
+    }
+
+    await db.collection('skincare_products').updateOne({
+        '_id': ObjectId(id)
+    }, {
+        '$set': updateProductInfo
+    });
+
     res.redirect('/skincare-products');
 })
 

@@ -1,0 +1,57 @@
+body{
+    font-family: Helvetica;
+    color: grey;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin:0;
+    padding:0;
+}
+
+a{
+    color:thistle;
+    text-decoration:none;
+}
+
+a:hover{
+    color:white;
+    background-color: mistyrose;
+}
+
+h1{
+    /* color: rgb(132, 212, 132); */
+    color:black;
+    background-color: honeydew;
+    margin:0 0 20px 0;
+    /* padding:20px 0 20px 20px; */
+}
+
+.container{
+    width:80%;
+    box-sizing: border-box;
+    /* padding-top:20px; */
+    /* border-left:1px solid black; */
+    /* border-right:1px solid black; */
+}
+
+nav, section{
+    /* padding: 0px 20px 0 20px; */
+    padding:20px;
+}
+
+nav{
+    /* padding:20px; */
+    background-color: rgb(253, 241, 239);
+}
+
+nav>a{
+    margin-right:10px;
+}
+
+form>div{
+    margin-bottom:20px;
+}
+
+ol>li>b{
+    background-color: azure;
+}

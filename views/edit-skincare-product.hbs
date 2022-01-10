@@ -17,21 +17,21 @@
 
         <section>
 
-            <h1>Add skincare Product</h1>
+            <h1>Edit ✨ {{skincareProduct.productName}} ✨</h1>
 
             <form method="POST">
 
                 <div>
                     <label>Brand</label>
-                    <input type="text" name="productBrand" />
+                    <input type="text" name="productBrand" value="{{skincareProduct.productBrand}}" />
                     </div>
                 <div>
                     <label>Product Name</label>
-                    <input type="text" name="productName" />
+                    <input type="text" name="productName" value="{{skincareProduct.productName}}" />
                 </div>
 
                 <div>
-                    <input type="submit" value="Add product">
+                    <input type="submit" value="Edit">
                 </div>
 
             </form>
