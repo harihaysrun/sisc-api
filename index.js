@@ -94,6 +94,38 @@ app.post('/skincare-products/:id/edit', async function(req,res){
     res.redirect('/skincare-products');
 })
 
+app.get('/skincare-products/:id/delete', async function(req,res){
+
+    let id = req.params.id;
+    const db = MongoUtil.getDB();
+    let productToDelete = await db.collection('skincare_products').findOne({
+        '_id': ObjectId(id)
+    });
+
+    // await db.collection('skincare_products').deleteOne({
+    //     '_id': ObjectId(id)
+    // })
+
+    // res.render('edit-skincare-product');
+
+    res.render('delete-skincare-product',{
+        'skincareProduct': productToDelete
+    });
+})
+
+app.post('/skincare-products/:id/delete', async function(req,res){
+
+    let id = req.params.id;
+    const db = MongoUtil.getDB();
+
+    await db.collection('skincare_products').deleteOne({
+        '_id': ObjectId(id)
+    })
+
+    res.redirect('/skincare-products');
+
+})
+
 app.listen(3000, function(){
     console.log("server has started")
 })

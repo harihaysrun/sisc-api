@@ -23,7 +23,11 @@
             <ol>
 
                 {{#each skincareProducts}}
-                    <li><b>{{this.productBrand}}</b> {{this.productName}} <a href="/skincare-products/{{this._id}}/edit">Edit</a></li>
+                    <li>
+                        <b>{{this.productBrand}}</b> {{this.productName}}
+                        <button><a href="/skincare-products/{{this._id}}/edit">Edit</a></button>
+                        <button><a href="/skincare-products/{{this._id}}/delete" style="color:red">Delete</a></button>
+                        </li>
                 {{/each}}
             
             </ol>
