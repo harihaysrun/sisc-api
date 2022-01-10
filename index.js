@@ -7,6 +7,11 @@ app.set('view engine', 'hbs');
 
 app.use(express.static('public'));
 
+// to submit form
+app.use(express.urlencoded({
+    extended:false
+}))
+
 require('dotenv').config();
 
 const MongoUtil = require('./MongoUtil');
@@ -29,17 +34,30 @@ app.get('/', function(req,res){
 
 app.get('/skincare-products', async function(req,res){
     const db = MongoUtil.getDB();
-    let skincareProducts = await db.collection('skincare_products');
+    let skincareProducts = await db.collection('skincare_products').find().toArray();
 
     res.render('skincare-products', {
         'skincareProducts': skincareProducts
     });
-    res.render('skincare-products');
 })
 
-app.get('/skincare-products/add'), function(req,res){
+app.get('/skincare-products/add', function(req,res){
     res.render('add-skincare-product');
-}
+})
+
+app.post('/skincare-products/add', async function(req,res){
+    
+    // let {productName} = req.body;
+    let productName = req.body.productName;
+
+    let productToAdd = {
+        'productName': productName
+    };
+
+    const db = MongoUtil.getDB();
+    await db.collection('skincare_products').insertOne(productToAdd);
+    res.redirect('/skincare-products');
+})
 
 app.listen(3000, function(){
     console.log("server has started")
