@@ -16,16 +16,18 @@
         </nav>
 
         <section>
+            <div id="previewPic" style="margin-bottom:20px;">
+                <img src="{{skincareProduct.productImage}}" />
+            </div>
             <h1>✨ {{skincareProduct.productBrand}} {{skincareProduct.productName}} ✨</h1>
 
-            <ol>
+            <h3>{{skincareProduct.productName}}</h3>
+            <p>{{skincareProduct.productType}} • {{skincareProduct.productSize}}ml</p>
+            <p>{{skincareProduct.skinType}}</p>
+            <p>{{skincareProduct.productDescription}}</p>
+            <button><a href="/skincare-products/{{skincareProduct._id}}/edit">Edit</a></button>
+            <button><a href="/skincare-products/{{skincareProduct._id}}/delete" style="color:red">Delete</a></button>
 
-                <h2>{{skincareProduct.productBrand}}</h2>
-                <p>{{skincareProduct.productName}}</p>
-                <button><a href="/skincare-products/{{skincareProduct._id}}/edit">Edit</a></button>
-                <button><a href="/skincare-products/{{skincareProduct._id}}/delete" style="color:red">Delete</a></button>
-            
-            </ol>
         </section>
 
     </div>    

@@ -51,10 +51,20 @@ app.post('/skincare-products/add', async function(req,res){
     // let {productName} = req.body;
     let productBrand = req.body.productBrand;
     let productName = req.body.productName;
+    let productImage = req.body.productImage;
+    let productType = req.body.productType;
+    let productSize = req.body.productSize;
+    let productDescription = req.body.productDescription;
+    let skinType = req.body.skinType;
 
     let productToAdd = {
         'productBrand': productBrand,
-        'productName': productName
+        'productName': productName,
+        'productImage': productImage,
+        'productType': productType,
+        'productSize': productSize,
+        'productDescription': productDescription,
+        'skinType': skinType
     };
 
     const db = MongoUtil.getDB();
@@ -95,7 +105,12 @@ app.post('/skincare-products/:id/edit', async function(req,res){
 
     let updateProductInfo = {
         'productBrand': req.body.productBrand,
-        'productName': req.body.productName
+        'productName': req.body.productName,
+        'productImage': req.body.productImage,
+        'productType': req.body.productType,
+        'productSize': req.body.productSize,
+        'productDescription': req.body.productDescription,
+        'skinType': req.body.skinType
     }
 
     await db.collection('skincare_products').updateOne({
