@@ -18,17 +18,25 @@
         <section>
             <h1>View All Skincare Products</h1>
 
-            <a href="/skincare-products/add">Add new product</a>
+            <button><a href="/skincare-products/add">Add new product</a></button>
 
             <ol>
 
                 {{#each skincareProducts}}
+                    <a href="/skincare-products/{{this._id}}">
+                        <li>
+                            <b>{{this.productBrand}}</b> {{this.productName}}
+                        </li>
+                    </a>
+                {{/each}}
+
+                {{!-- {{#each skincareProducts}}
                     <li>
                         <b>{{this.productBrand}}</b> {{this.productName}}
                         <button><a href="/skincare-products/{{this._id}}/edit">Edit</a></button>
                         <button><a href="/skincare-products/{{this._id}}/delete" style="color:red">Delete</a></button>
                         </li>
-                {{/each}}
+                {{/each}} --}}
             
             </ol>
         </section>

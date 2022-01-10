@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ {{skincareProduct.productName}} ✨</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        
+        <nav>
+            <a href="/">Home</a>
+            <a href="/skincare-products">Skincare Products</a>
+        </nav>
+
+        <section>
+            <h1>✨ {{skincareProduct.productBrand}} {{skincareProduct.productName}} ✨</h1>
+
+            <ol>
+
+                <h2>{{skincareProduct.productBrand}}</h2>
+                <p>{{skincareProduct.productName}}</p>
+                <button><a href="/skincare-products/{{skincareProduct._id}}/edit">Edit</a></button>
+                <button><a href="/skincare-products/{{skincareProduct._id}}/delete" style="color:red">Delete</a></button>
+            
+            </ol>
+        </section>
+
+    </div>    
+</body>
+</html>

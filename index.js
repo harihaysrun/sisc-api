@@ -62,6 +62,19 @@ app.post('/skincare-products/add', async function(req,res){
     res.redirect('/skincare-products');
 })
 
+app.get('/skincare-products/:id', async function(req,res){
+
+    let id = req.params.id;
+    const db = MongoUtil.getDB();
+    let productToDisplay = await db.collection('skincare_products').findOne({
+        '_id': ObjectId(id)
+    })
+
+    res.render('skincare-product-info',{
+        'skincareProduct': productToDisplay
+    });
+})
+
 app.get('/skincare-products/:id/edit', async function(req,res){
 
     let id = req.params.id;
@@ -91,7 +104,7 @@ app.post('/skincare-products/:id/edit', async function(req,res){
         '$set': updateProductInfo
     });
 
-    res.redirect('/skincare-products');
+    res.redirect('/skincare-products/' + id);
 })
 
 app.get('/skincare-products/:id/delete', async function(req,res){

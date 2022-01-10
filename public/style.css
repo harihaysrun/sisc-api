@@ -13,9 +13,18 @@ a{
     text-decoration:none;
 }
 
-a:hover{
+a:hover, li:hover{
+    max-width:500px;
     color:white;
     background-color: mistyrose;
+}
+
+li:hover{
+    color:pink;
+}
+
+li{
+    margin:10px 0 10px 0;
 }
 
 h1{
