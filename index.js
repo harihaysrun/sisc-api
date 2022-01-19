@@ -46,33 +46,58 @@ app.get('/skincare-products', async function(req,res){
 })
 
 app.get('/skincare-products/add', function(req,res){
-    res.render('add-skincare-product');
+    // let r = await db.collection('skincare_products').findOne({
+        // _id: new ObjectId(req.params.id)
+    // });
+    // res.json(r);
+    // res.render('add-skincare-product');
 })
 
-app.post('/skincare-products/add', async function(req,res){
+app.post('/skincare-products', async function(req,res){
     
-    // let {productName} = req.body;
-    let productBrand = req.body.productBrand;
-    let productName = req.body.productName;
-    let productImage = req.body.productImage;
-    let productType = req.body.productType;
-    let productSize = req.body.productSize;
-    let productDescription = req.body.productDescription;
-    let skinType = req.body.skinType;
+    // let productBrand = req.body.productBrand;
+    // let productName = req.body.productName;
+    // let productImage = req.body.productImage;
+    // let productType = req.body.productType;
+    // let productSize = req.body.productSize;
+    // let productDescription = req.body.productDescription;
+    // let skinType = req.body.skinType;
+
+    // let productToAdd = {
+    //     'productBrand': productBrand,
+    //     'productName': productName,
+    //     'productImage': productImage,
+    //     'productType': productType,
+    //     'productSize': productSize,
+    //     'productDescription': productDescription,
+    //     'skinType': skinType
+    // };
 
     let productToAdd = {
-        'productBrand': productBrand,
-        'productName': productName,
-        'productImage': productImage,
-        'productType': productType,
-        'productSize': productSize,
-        'productDescription': productDescription,
-        'skinType': skinType
-    };
+        'productBrand': req.body.product_brand,
+        'productName': req.body.product_name,
+        'productImage': req.body.product_image,
+        'productType': req.body.product_size,
+        'productSize': req.body.product_size_ml,
+        'productDescription': req.body.product_description,
+        'skinType': req.body.skin_type
+    }
 
     const db = MongoUtil.getDB();
-    await db.collection('skincare_products').insertOne(productToAdd);
-    res.redirect('/skincare-products');
+    let newProduct = await db.collection('skincare_products').insertOne({
+        'productBrand': req.body.productBrand,
+        'productName': req.body.productName,
+        'productImage': req.body.productImage,
+        'productType': req.body.productType,
+        'productSize': req.body.productSize,
+        'productDescription': req.body.productDescription,
+        'skinType': req.body.skinType
+    });
+
+    res.json(newProduct.ops);
+    // res.redirect('/skincare-products');
+
+
 })
 
 app.get('/skincare-products/:id', async function(req,res){
