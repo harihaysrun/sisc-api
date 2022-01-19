@@ -1,7 +1,10 @@
 const express = require ('express');
 const hbs = require ('hbs');
+const cors = require('cors');
 
 const app = express();
+app.use(express.json());
+app.use(cors());
 
 app.set('view engine', 'hbs');
 
@@ -36,10 +39,10 @@ app.get('/', function(req,res){
 app.get('/skincare-products', async function(req,res){
     const db = MongoUtil.getDB();
     let skincareProducts = await db.collection('skincare_products').find().toArray();
-
-    res.render('skincare-products', {
-        'skincareProducts': skincareProducts
-    });
+    res.json(skincareProducts);
+    // res.render('skincare-products', {
+    //     'skincareProducts': skincareProducts
+    // });
 })
 
 app.get('/skincare-products/add', function(req,res){
