@@ -73,30 +73,37 @@ app.post('/skincare-products', async function(req,res){
     //     'skinType': skinType
     // };
 
-    let productToAdd = {
-        'productBrand': req.body.product_brand,
-        'productName': req.body.product_name,
-        'productImage': req.body.product_image,
-        'productType': req.body.product_size,
-        'productSize': req.body.product_size_ml,
-        'productDescription': req.body.product_description,
-        'skinType': req.body.skin_type
-    }
+    // let productToAdd = {
+    //     'productBrand': req.body.product_brand,
+    //     'productName': req.body.product_name,
+    //     'productImage': req.body.product_image,
+    //     'productType': req.body.product_size,
+    //     'productSize': req.body.product_size_ml,
+    //     'productDescription': req.body.product_description,
+    //     'skinType': req.body.skin_type
+    // }
 
     const db = MongoUtil.getDB();
     let newProduct = await db.collection('skincare_products').insertOne({
+        'listingType': req.body.listingType,
+        'productCondition': req.body.product_condition,
         'productBrand': req.body.productBrand,
         'productName': req.body.productName,
         'productImage': req.body.productImage,
+        'productQuantity': req.body.productQuantity,
+        'productQuantityBox': req.body.productQuantityBox,
         'productType': req.body.productType,
         'productSize': req.body.productSize,
+        'productPrice': req.body.productPrice,
+        'productPriceDollars': req.body.productPriceDollars,
         'productDescription': req.body.productDescription,
-        'skinType': req.body.skinType
+        'skinType': req.body.skinType,
+        'skinConcerns': req.body.skinConcerns,
+        'productVegan': req.body.productVegan,
+        'productCrueltyFree': req.body.productCrueltyFree,
     });
 
     res.json(newProduct.ops);
-    // res.redirect('/skincare-products');
-
 
 })
 
@@ -105,12 +112,47 @@ app.get('/skincare-products/:id', async function(req,res){
     let id = req.params.id;
     const db = MongoUtil.getDB();
     let productToDisplay = await db.collection('skincare_products').findOne({
-        '_id': ObjectId(id)
+        // '_id': ObjectId(id)
+        '_id': new ObjectId(id)
     })
 
-    res.render('skincare-product-info',{
-        'skincareProduct': productToDisplay
+
+    res.json(productToDisplay);
+
+    // res.render('skincare-product-info',{
+    //     'skincareProduct': productToDisplay
+    // });
+})
+
+app.patch('/skincare-products/:id', async function(req,res){
+
+    let id = req.params.id;
+    const db = MongoUtil.getDB();
+    await db.collection('skincare_products').updateOne({
+        '_id': new ObjectId(id),
+    },{
+        '$set':{
+            'listingType': req.body.listingType,
+            'productCondition': req.body.productCondition,
+            'productBrand': req.body.productBrand,
+            'productName': req.body.productName,
+            'productImage': req.body.productImage,
+            'productQuantity': req.body.productQuantity,
+            'productQuantityBox': req.body.productQuantityBox,
+            'productType': req.body.productType,
+            'productSize': req.body.productSize,
+            'productPrice': req.body.productPrice,
+            'productPriceDollars': req.body.productPriceDollars,
+            'productDescription': req.body.productDescription,
+            'skinType': req.body.skinType,
+            'skinConcerns': req.body.skinConcerns,
+            'productVegan': req.body.productVegan,
+            'productCrueltyFree': req.body.productCrueltyFree
+        }
     });
+
+    // res.json(newProduct.ops);
+
 })
 
 app.get('/skincare-products/:id/edit', async function(req,res){
@@ -154,19 +196,19 @@ app.get('/skincare-products/:id/delete', async function(req,res){
 
     let id = req.params.id;
     const db = MongoUtil.getDB();
-    let productToDelete = await db.collection('skincare_products').findOne({
-        '_id': ObjectId(id)
-    });
-
-    // await db.collection('skincare_products').deleteOne({
+    // let productToDelete = await db.collection('skincare_products').findOne({
     //     '_id': ObjectId(id)
-    // })
+    // });
+
+    await db.collection('skincare_products').deleteOne({
+        '_id': ObjectId(id)
+    })
 
     // res.render('edit-skincare-product');
 
-    res.render('delete-skincare-product',{
-        'skincareProduct': productToDelete
-    });
+    // res.render('delete-skincare-product',{
+    //     'skincareProduct': productToDelete
+    // });
 })
 
 app.post('/skincare-products/:id/delete', async function(req,res){
