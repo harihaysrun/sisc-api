@@ -36,53 +36,17 @@ app.get('/', function(req,res){
     res.render('index');
 })
 
+// get list of skincare products
 app.get('/skincare-products', async function(req,res){
     const db = MongoUtil.getDB();
     let skincareProducts = await db.collection('skincare_products').find().toArray();
     res.json(skincareProducts);
-    // res.render('skincare-products', {
-    //     'skincareProducts': skincareProducts
-    // });
 })
 
-app.get('/skincare-products/add', function(req,res){
-    // let r = await db.collection('skincare_products').findOne({
-        // _id: new ObjectId(req.params.id)
-    // });
-    // res.json(r);
-    // res.render('add-skincare-product');
-})
 
-app.post('/skincare-products', async function(req,res){
+// add new skincare product
+app.post('/skincare-products/add', async function(req,res){
     
-    // let productBrand = req.body.productBrand;
-    // let productName = req.body.productName;
-    // let productImage = req.body.productImage;
-    // let productType = req.body.productType;
-    // let productSize = req.body.productSize;
-    // let productDescription = req.body.productDescription;
-    // let skinType = req.body.skinType;
-
-    // let productToAdd = {
-    //     'productBrand': productBrand,
-    //     'productName': productName,
-    //     'productImage': productImage,
-    //     'productType': productType,
-    //     'productSize': productSize,
-    //     'productDescription': productDescription,
-    //     'skinType': skinType
-    // };
-
-    // let productToAdd = {
-    //     'productBrand': req.body.product_brand,
-    //     'productName': req.body.product_name,
-    //     'productImage': req.body.product_image,
-    //     'productType': req.body.product_size,
-    //     'productSize': req.body.product_size_ml,
-    //     'productDescription': req.body.product_description,
-    //     'skinType': req.body.skin_type
-    // }
-
     const db = MongoUtil.getDB();
     let newProduct = await db.collection('skincare_products').insertOne({
         'listingType': req.body.listingType,
@@ -107,6 +71,7 @@ app.post('/skincare-products', async function(req,res){
 
 })
 
+// get product info
 app.get('/skincare-products/:id', async function(req,res){
 
     let id = req.params.id;
@@ -115,27 +80,14 @@ app.get('/skincare-products/:id', async function(req,res){
         // '_id': ObjectId(id)
         '_id': new ObjectId(id)
     })
-
-
     res.json(productToDisplay);
 
-    // res.render('skincare-product-info',{
-    //     'skincareProduct': productToDisplay
-    // });
 })
 
-// comment section
+// add comment
 app.post('/skincare-products/:id/comment/add', async function(req,res){
     let id = req.params.id;
     const db = MongoUtil.getDB();
-    // let replyTo;
-    // let commentText = req.body.commentText.split(" ");
-    // commentText[0].innerHTML = `<b style="background-color:azure">` + commentText[0] + `</b>`;=
-    // commentText = commentText.join(" ")
-    
-    // let commentText = req.body.commentText;
-    // let replyTo = commentText.split(/ (.*)/);
-    // replyTo[0].style.color = "pink";
 
     await db.collection('skincare_products').updateOne({
         '_id': new ObjectId(id),
@@ -166,6 +118,7 @@ app.post('/skincare-products/:id/comment/delete', async function(req,res){
     })
 })
 
+// edit skincare product
 app.patch('/skincare-products/:id', async function(req,res){
 
     let id = req.params.id;
@@ -193,66 +146,9 @@ app.patch('/skincare-products/:id', async function(req,res){
         }
     });
 
-    // res.json(newProduct.ops);
-
 })
 
-app.get('/skincare-products/:id/edit', async function(req,res){
-
-    let id = req.params.id;
-    const db = MongoUtil.getDB();
-    let productToEdit = await db.collection('skincare_products').findOne({
-        '_id': ObjectId(id)
-    })
-
-    res.render('edit-skincare-product',{
-        'skincareProduct': productToEdit
-    });
-})
-
-app.post('/skincare-products/:id/edit', async function(req,res){
-
-    let id = req.params.id;
-    const db = MongoUtil.getDB();
-
-    let updateProductInfo = {
-        'productBrand': req.body.productBrand,
-        'productName': req.body.productName,
-        'productImage': req.body.productImage,
-        'productType': req.body.productType,
-        'productSize': req.body.productSize,
-        'productDescription': req.body.productDescription,
-        'skinType': req.body.skinType
-    }
-
-    await db.collection('skincare_products').updateOne({
-        '_id': ObjectId(id)
-    }, {
-        '$set': updateProductInfo
-    });
-
-    res.redirect('/skincare-products/' + id);
-})
-
-app.get('/skincare-products/:id/delete', async function(req,res){
-
-    let id = req.params.id;
-    const db = MongoUtil.getDB();
-    // let productToDelete = await db.collection('skincare_products').findOne({
-    //     '_id': ObjectId(id)
-    // });
-
-    await db.collection('skincare_products').deleteOne({
-        '_id': ObjectId(id)
-    })
-
-    // res.render('edit-skincare-product');
-
-    // res.render('delete-skincare-product',{
-    //     'skincareProduct': productToDelete
-    // });
-})
-
+// delete post
 app.post('/skincare-products/:id/delete', async function(req,res){
 
     let id = req.params.id;
@@ -261,10 +157,110 @@ app.post('/skincare-products/:id/delete', async function(req,res){
     await db.collection('skincare_products').deleteOne({
         '_id': ObjectId(id)
     })
-
-    res.redirect('/skincare-products');
-
 })
+
+
+// ///////////requests///////////
+
+// // get list of requests
+// app.get('/skincare-products/request', async function(req,res){
+//     const db = MongoUtil.getDB();
+//     let requestedProducts = await db.collection('requested_products').find().toArray();
+//     res.json(requestedProducts);
+//     // res.render('skincare-products', {
+//     //     'skincareProducts': skincareProducts
+//     // });
+// })
+
+// // request product
+// app.post('/skincare-products/request', async function(req,res){
+    
+//     const db = MongoUtil.getDB();
+//     let requestProduct = await db.collection('requested_products').insertOne({
+//         'listingType': req.body.listingType,
+//         'productCondition': req.body.productCondition,
+//         'productBrand': req.body.productBrand,
+//         'productName': req.body.productName,
+//         'productImage': req.body.productImage,
+//         'productQuantity': req.body.productQuantity,
+//         'productQuantityBox': req.body.productQuantityBox,
+//         'productType': req.body.productType,
+//         'productSize': req.body.productSize
+//     });
+
+//     res.json(requestProduct.ops);
+
+// })
+
+// // get product request info
+// app.get('/skincare-products/request/:id', async function(req,res){
+
+//     let id = req.params.id;
+//     const db = MongoUtil.getDB();
+
+//     let productToDisplay = await db.collection('requested_products').findOne({
+//         '_id': new ObjectId(id)
+//     })
+//     res.json(productToDisplay);
+// })
+
+// // edit skincare product
+// app.patch('/skincare-products/request/:id', async function(req,res){
+
+//     let id = req.params.id;
+//     const db = MongoUtil.getDB();
+//     await db.collection('requested_products').updateOne({
+//         '_id': new ObjectId(id),
+//     },{
+//         '$set':{
+//             'listingType': req.body.listingType,
+//             'productCondition': req.body.productCondition,
+//             'productBrand': req.body.productBrand,
+//             'productName': req.body.productName,
+//             'productImage': req.body.productImage,
+//             'productQuantity': req.body.productQuantity,
+//             'productQuantityBox': req.body.productQuantityBox,
+//             'productType': req.body.productType,
+//             'productSize': req.body.productSize
+//         }
+//     });
+
+// });
+
+// // request comment section
+// app.post('/skincare-products/request/:id/comment/add', async function(req,res){
+//     let id = req.params.id;
+//     const db = MongoUtil.getDB();
+
+//     await db.collection('requested_products').updateOne({
+//         '_id': new ObjectId(id),
+//     },{
+//         '$push':{
+//             'comments':{
+//                 '_id': new ObjectId(),
+//                 'commentName': req.body.commentName,
+//                 'commentText': req.body.commentText
+//             }
+//         }
+//     })
+// })
+
+// // delete comment
+// app.post('/skincare-products/request/:id/comment/delete', async function(req,res){
+//     let id = req.params.id;
+//     let commentId = req.body.commentId;
+//     const db = MongoUtil.getDB();
+//     await db.collection('requested_products').updateOne({
+//         '_id': new ObjectId(id),
+//     },{
+//         '$pull':{
+//             'comments':{
+//                 '_id': new ObjectId(commentId)
+//             }
+//         }
+//     })
+// })
+
 
 app.listen(3000, function(){
     console.log("server has started")
