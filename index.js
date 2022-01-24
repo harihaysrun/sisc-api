@@ -201,27 +201,27 @@ app.get('/requested-products/:id', async function(req,res){
     res.json(productToDisplay);
 })
 
-// // edit skincare product
-// app.patch('/requested-products/:id', async function(req,res){
+// edit skincare product
+app.patch('/requested-products/:id', async function(req,res){
 
-//     let id = req.params.id;
-//     const db = MongoUtil.getDB();
-//     await db.collection('requested_products').updateOne({
-//         '_id': new ObjectId(id),
-//     },{
-//         '$set':{
-//             'productCondition': req.body.productCondition,
-//             'productBrand': req.body.productBrand,
-//             'productName': req.body.productName,
-//             'productImage': req.body.productImage,
-//             'productQuantity': req.body.productQuantity,
-//             'productQuantityBox': req.body.productQuantityBox,
-//             'productType': req.body.productType,
-//             'productSize': req.body.productSize
-//         }
-//     });
+    let id = req.params.id;
+    const db = MongoUtil.getDB();
+    await db.collection('requested_products').updateOne({
+        '_id': new ObjectId(id),
+    },{
+        '$set':{
+            'productCondition': req.body.productCondition,
+            'productBrand': req.body.productBrand,
+            'productName': req.body.productName,
+            'productImage': req.body.productImage,
+            'productQuantity': req.body.productQuantity,
+            'productQuantityBox': req.body.productQuantityBox,
+            'productType': req.body.productType,
+            'productSize': req.body.productSize
+        }
+    });
 
-// });
+});
 
 // request comment section
 app.post('/requested-products/:id/comment/add', async function(req,res){
@@ -256,6 +256,18 @@ app.post('/requested-products/:id/comment/delete', async function(req,res){
         }
     })
 })
+
+// delete post
+app.post('/requested-products/:id/delete', async function(req,res){
+
+    let id = req.params.id;
+    const db = MongoUtil.getDB();
+
+    await db.collection('requested_products').deleteOne({
+        '_id': ObjectId(id)
+    })
+})
+
 
 
 app.listen(3000, function(){
