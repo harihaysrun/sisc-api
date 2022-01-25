@@ -5,5 +5,8 @@
     "express": "^4.17.2",
     "hbs": "^4.2.0",
     "mongo": "^0.1.0"
+  },
+  "scripts": {
+    "start": "node index.js"
   }
 }

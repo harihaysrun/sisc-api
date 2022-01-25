@@ -270,6 +270,6 @@ app.post('/requested-products/:id/delete', async function(req,res){
 
 
 
-app.listen(3000, function(){
+app.listen(process.env.PORT, function(){
     console.log("server has started")
 })
