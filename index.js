@@ -120,6 +120,8 @@ app.post('/skincare-products/:id/comment/delete', async function(req,res){
             }
         }
     })
+
+    res.sendStatus(200);
 })
 
 // edit skincare product
@@ -151,6 +153,8 @@ app.patch('/skincare-products/:id', async function(req,res){
             'productCrueltyFree': req.body.productCrueltyFree
         }
     });
+    
+    res.sendStatus(200);
 
 })
 
@@ -163,6 +167,8 @@ app.post('/skincare-products/:id/delete', async function(req,res){
     await db.collection('skincare_products').deleteOne({
         '_id': ObjectId(id)
     })
+    
+    res.sendStatus(200);
 })
 
 
@@ -226,6 +232,8 @@ app.patch('/requested-products/:id', async function(req,res){
             'productSize': req.body.productSize
         }
     });
+    
+    res.sendStatus(200);
 
 });
 
@@ -245,6 +253,8 @@ app.post('/requested-products/:id/comment/add', async function(req,res){
             }
         }
     })
+    
+    res.sendStatus(200);
 })
 
 // delete comment
@@ -261,6 +271,8 @@ app.post('/requested-products/:id/comment/delete', async function(req,res){
             }
         }
     })
+    
+    res.sendStatus(200);
 })
 
 // delete post
@@ -272,6 +284,8 @@ app.post('/requested-products/:id/delete', async function(req,res){
     await db.collection('requested_products').deleteOne({
         '_id': ObjectId(id)
     })
+    
+    res.sendStatus(200);
 })
 
 
