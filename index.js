@@ -54,6 +54,8 @@ app.post('/skincare-products/add', async function(req,res){
         'productBrand': req.body.productBrand,
         'productName': req.body.productName,
         'productImage': req.body.productImage,
+        'productCategory': req.body.productCategory,
+        'productCategoryOthers': req.body.productCategoryOthers,
         'productQuantity': req.body.productQuantity,
         'productQuantityBox': req.body.productQuantityBox,
         'productType': req.body.productType,
@@ -127,11 +129,13 @@ app.patch('/skincare-products/:id', async function(req,res){
         '_id': new ObjectId(id),
     },{
         '$set':{
-            'listingType': req.body.listingType,
+            // 'listingType': req.body.listingType,
             'productCondition': req.body.productCondition,
             'productBrand': req.body.productBrand,
             'productName': req.body.productName,
             'productImage': req.body.productImage,
+            'productCategory': req.body.productCategory,
+            'productCategoryOthers': req.body.productCategoryOthers,
             'productQuantity': req.body.productQuantity,
             'productQuantityBox': req.body.productQuantityBox,
             'productType': req.body.productType,
