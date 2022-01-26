@@ -102,6 +102,8 @@ app.post('/skincare-products/:id/comment/add', async function(req,res){
             }
         }
     })
+
+    res.sendStatus(200);
 })
 
 // delete comment
