@@ -177,14 +177,14 @@ app.post('/search', async function(req,res){
     const db = MongoUtil.getDB();
     let search = await db.collection('skincare_products').find({
         '$or': [
-                {'productBrand': {
-                    '$regex': req.body.search, '$options': 'i'
-                    }
-                },
-                {'productName': {
-                    '$regex': req.body.search, '$options':'i'
-                    }
-                },
+                // {'productBrand': {
+                //     '$regex': req.body.search, '$options': 'i'
+                //     }
+                // },
+                // {'productName': {
+                //     '$regex': req.body.search, '$options':'i'
+                //     }
+                // },
                 {'productCondition': req.body.productCondition},
                 // {'productCategory': req.body.productCategory},
                 // {'productType': req.body.productType},
