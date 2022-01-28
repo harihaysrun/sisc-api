@@ -189,6 +189,7 @@ app.post('/search', async function(req,res){
                 {'productCategory': req.body.productCategory},
                 {'productType': req.body.productType},
                 {'productPriceDollars': {
+                    '$gte': 0,
                     '$lte': req.body.productPriceDollars
                     }
                 },
