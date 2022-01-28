@@ -173,7 +173,7 @@ app.post('/skincare-products/:id/delete', async function(req,res){
 
 
 // search
-app.get('/search', async function(req,res){
+app.post('/search', async function(req,res){
     const db = MongoUtil.getDB();
     let search = await db.collection('skincare_products').find({
         '$or': [
@@ -184,7 +184,7 @@ app.get('/search', async function(req,res){
                     '$regex': req.body.search, '$options':'i'
                     }
                 },
-                {'productVegan': req.body.product_vegan},
+                {'productVegan': req.body.productVegan},
                 {'productPriceDollars': {
                     '$lte': 0
                     }
