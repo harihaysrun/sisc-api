@@ -174,22 +174,22 @@ app.post('/skincare-products/:id/delete', async function(req,res){
 
 // search
 app.get('/search', async function(req,res){
-    // const db = MongoUtil.getDB();
-    // let results = await db.collection('skincare_products').find({
-    //     'productVegan': 'Vegan'
-    // }, {
-    //     'productBrand':1,
-    //     'productName':1,
-    //     'productVegan':1
-    // }).toArray();
+    const db = MongoUtil.getDB();
+    let results = await db.collection('skincare_products').find({
+        'productVegan': 'Vegan'
+    }, {
+        'productBrand':1,
+        'productName':1,
+        'productVegan':1
+    }).toArray();
 
     // console.log(results)
-    // res.json(results);
-    // res.sendStatus(200);
+    res.json(results);
+    res.sendStatus(200);
     
-    const db = MongoUtil.getDB();
-    let skincareProducts = await db.collection('skincare_products').find().toArray();
-    res.json(skincareProducts);
+    // const db = MongoUtil.getDB();
+    // let skincareProducts = await db.collection('skincare_products').find().toArray();
+    // res.json(skincareProducts);
 
 })
 
