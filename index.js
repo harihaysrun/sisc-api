@@ -192,9 +192,9 @@ app.post('/search', async function(req,res){
                     '$lte': req.body.productPriceDollars
                     }
                 },
-                {'skinType': req.body.skinType},
-                {'productVegan': req.body.productVegan},
-                {'productCrueltyFree': req.body.productCrueltyFree},
+                // {'skinType': req.body.skinType},
+                // {'productVegan': req.body.productVegan},
+                // {'productCrueltyFree': req.body.productCrueltyFree},
                 ]
     }).toArray();
 
