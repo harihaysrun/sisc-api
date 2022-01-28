@@ -185,7 +185,7 @@ app.post('/search', async function(req,res){
                     '$regex': req.body.search, '$options':'i'
                     }
                 },
-                {'productVegan': req.body.productVegan},
+                {'productVegan': req.body.productVegan.join()},
                 {'productPriceDollars': {
                     '$lte': req.body.productPriceDollars
                     }
