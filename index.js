@@ -177,13 +177,12 @@ app.get('/search', async function(req,res){
     const db = MongoUtil.getDB();
     let search = await db.collection('skincare_products').find({
         'productVegan': 'Yes'
-    }
-    , {
+    }, {
         'productBrand':1,
         'productName':1,
         'productVegan':1
     }
-    ).toArray();
+    ).pretty();
 
     // console.log(results)
     res.json(search);
