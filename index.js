@@ -178,7 +178,8 @@ app.post('/search', async function(req,res){
     let search = await db.collection('skincare_products').find({
         '$or': [
                 {'productBrand': {
-                    '$regex': req.body.search, '$options': 'i'}
+                    '$regex': req.body.search, '$options': 'i'
+                    }
                 },
                 {'productName': {
                     '$regex': req.body.search, '$options':'i'
@@ -186,7 +187,7 @@ app.post('/search', async function(req,res){
                 },
                 {'productVegan': req.body.productVegan},
                 {'productPriceDollars': {
-                    '$lte': 0
+                    '$lte': req.body.productPriceDollars
                     }
                 }
                 ]
