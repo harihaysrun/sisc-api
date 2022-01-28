@@ -186,8 +186,8 @@ app.post('/search', async function(req,res){
                     }
                 },
                 {'productCondition': req.body.productCondition},
-                {'productCategory': req.body.productCategory},
-                {'productType': req.body.productType},
+                // {'productCategory': req.body.productCategory},
+                // {'productType': req.body.productType},
                 {'productPriceDollars': {
                     '$lte': req.body.productPriceDollars
                     }
