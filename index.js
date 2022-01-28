@@ -177,7 +177,7 @@ app.get('/search', async function(req,res){
     const db = MongoUtil.getDB();
     let search = await db.collection('skincare_products').find({
         '$or': [
-                {'productVegan':'Yes'},
+                {'productVegan':''},
                 {'productPriceDollars': {
                     '$lte': 5
                 }}
