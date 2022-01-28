@@ -182,7 +182,7 @@ app.get('/search', async function(req,res){
         'productName':1,
         'productVegan':1
     }
-    ).pretty();
+    ).pretty().toArray();
 
     // console.log(results)
     res.json(search);
