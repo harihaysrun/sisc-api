@@ -173,7 +173,7 @@ app.post('/skincare-products/:id/delete', async function(req,res){
 
 
 // search
-app.get('/skincare-products/search', async function(req,res){
+app.get('/search', async function(req,res){
     // const db = MongoUtil.getDB();
     // let results = await db.collection('skincare_products').find({
     //     'productVegan': 'Vegan'
