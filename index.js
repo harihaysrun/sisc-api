@@ -183,6 +183,7 @@ app.get('/skincare-products/search', async function(req,res){
         'productVegan':1
     }).toArray();
 
+    console.log(results)
     res.json(results);
     res.sendStatus(200);
 })
