@@ -202,7 +202,7 @@ app.post('/search', async function(req,res){
                     '$in': [req.body.skinType]
                 }},
                 {'productVegan': req.body.productVegan},
-                // {'productCrueltyFree': req.body.productCrueltyFree},
+                {'productCrueltyFree': req.body.productCrueltyFree},
                 ]
     }).toArray();
 
