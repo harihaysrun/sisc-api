@@ -177,10 +177,18 @@ app.get('/search', async function(req,res){
     const db = MongoUtil.getDB();
     let search = await db.collection('skincare_products').find({
         '$or': [
-                {'productVegan':''},
+                {'productBrand': {
+                    '$regex': req.body.search, '$options': 'i'}
+                },
+                {'productName': {
+                    '$regex': req.body.search, '$options':'i'
+                    }
+                },
+                {'productVegan': req.body.product_vegan},
                 {'productPriceDollars': {
-                    '$lte': 15
-                }}
+                    '$lte': 0
+                    }
+                }
                 ]
     }).toArray();
 
