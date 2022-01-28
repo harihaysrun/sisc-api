@@ -185,11 +185,16 @@ app.post('/search', async function(req,res){
                     '$regex': req.body.search, '$options':'i'
                     }
                 },
-                {'productVegan': req.body.productVegan},
+                {'productCondition': req.body.productCondition},
+                {'productCategory': req.body.productCategory},
+                {'productType': req.body.productType},
                 {'productPriceDollars': {
                     '$lte': req.body.productPriceDollars
                     }
-                }
+                },
+                {'skinType': req.body.skinType},
+                {'productVegan': req.body.productVegan},
+                {'productCrueltyFree': req.body.productCrueltyFree},
                 ]
     }).toArray();
 
