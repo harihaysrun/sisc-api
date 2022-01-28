@@ -188,10 +188,10 @@ app.post('/search', async function(req,res){
                 {'productCondition': req.body.productCondition},
                 {'productCategory': req.body.productCategory},
                 {'productType': req.body.productType},
-                {'productPriceDollars': {
-                    '$lte': req.body.productPriceDollars
-                    }
-                },
+                // {'productPriceDollars': {
+                //     '$lte': req.body.productPriceDollars
+                //     }
+                // },
                 // {'skinType': { 
                 //     '$in': [req.body.skinType]
                 // }},
