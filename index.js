@@ -179,7 +179,7 @@ app.get('/search', async function(req,res){
         '$or': [
                 {'productVegan':''},
                 {'productPriceDollars': {
-                    '$lte': 10
+                    '$lte': 15
                 }}
                 ]
     }).toArray();
