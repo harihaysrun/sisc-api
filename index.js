@@ -186,8 +186,8 @@ app.get('/search', async function(req,res){
     ).toArray();
 
     // console.log(results)
-    res.json(results);
-    // res.sendStatus(200);
+    // res.json(results);
+    res.sendStatus(200);
     
     // const db = MongoUtil.getDB();
     // let skincareProducts = await db.collection('skincare_products').find().toArray();
