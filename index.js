@@ -289,6 +289,21 @@ app.post('/requested-products/:id/delete', async function(req,res){
 })
 
 
+// search
+app.get('/skincare-products/search', async function(req,res){
+    const db = MongoUtil.getDB();
+    let response = await db.collection('skincare_products').find({
+        'productVegan': 'Vegan'
+    }, {
+        'productBrand':1,
+        'productName':1,
+        'productVegan':1
+    });
+
+
+    res.json(response);
+})
+
 
 app.listen(process.env.PORT, function(){
     console.log("server has started")
