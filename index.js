@@ -188,14 +188,19 @@ app.post('/search', async function(req,res){
                 {'productCondition': req.body.productCondition},
                 {'productCategory': req.body.productCategory},
                 {'productType': req.body.productType},
+                {'productPrice': {
+                    '$gte': 0,
+                    '$lte': req.body.productPriceDollars
+                    }
+                },
                 {'productPriceDollars': {
                     '$gte': 0,
                     '$lte': req.body.productPriceDollars
                     }
                 },
-                // {'skinType': { 
-                //     '$in': [req.body.skinType]
-                // }},
+                {'skinType': { 
+                    '$in': [req.body.skinType]
+                }},
                 // {'productVegan': req.body.productVegan},
                 // {'productCrueltyFree': req.body.productCrueltyFree},
                 ]
