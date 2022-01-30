@@ -383,10 +383,6 @@ app.post('/reviews/:id/comment/add', async function(req,res){
     await db.collection('review_board').updateOne({
         '_id': new ObjectId(id),
     },{
-        '$set':{
-            'noOfReviews': req.body.noOfReviews
-        }
-    },{
         '$push':{
             'reviews':{
                 '_id': new ObjectId(),
@@ -396,6 +392,10 @@ app.post('/reviews/:id/comment/add', async function(req,res){
                 'skinType': req.body.skinType,
                 'repurchase': req.body.repurchase,
             }
+        }
+    },{
+        '$set':{
+            'noOfReviews': req.body.noOfReviews
         }
     })
     // await db.collection('review_board').aggregate([
