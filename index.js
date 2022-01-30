@@ -394,6 +394,19 @@ app.post('/reviews/:id/comment/add', async function(req,res){
             }
         }
     })
+    await db.collection('review_board').aggregate([
+        {
+            $project:{
+                'noOfReviews': {
+                    $cond: {
+                        if: {$isArray: "$reviews"},
+                        then: { $size: "$reviews"},
+                        else: 0
+                    }
+                }
+            }
+        }
+    ])
     
     res.sendStatus(200);
 })
