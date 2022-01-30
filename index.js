@@ -380,7 +380,9 @@ app.post('/reviews/:id/comment/add', async function(req,res){
     let id = req.params.id;
     const db = MongoUtil.getDB();
 
-    await db.collection('review_board').updateOne({
+    await db.collection('review_board').updateOne({     
+        'noOfReviews': req.body.noOfReviews
+    }, {
         '_id': new ObjectId(id),
     },{
         '$push':{
@@ -391,7 +393,6 @@ app.post('/reviews/:id/comment/add', async function(req,res){
                 'rating': req.body.rating,
                 'skinType': req.body.skinType,
                 'repurchase': req.body.repurchase,
-                'noOfReviews': req.body.noOfReviews
             }
         }
     })
