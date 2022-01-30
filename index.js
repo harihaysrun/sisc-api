@@ -335,6 +335,25 @@ app.post('/requested-products/:id/delete', async function(req,res){
 })
 
 
+
+// add new skincare product
+app.post('/skincare-products/add', async function(req,res){
+    
+    const db = MongoUtil.getDB();
+    let newProduct = await db.collection('review_board').insertOne({
+        'productBrand': req.body.productBrand,
+        'productName': req.body.productName,
+        'productImage': req.body.productImage,
+        'productCategory': req.body.productCategory,
+        'productCategoryOthers': req.body.productCategoryOthers,
+        'productVegan': req.body.productVegan,
+        'productCrueltyFree': req.body.productCrueltyFree,
+    });
+
+    res.json(newProduct.ops);
+
+})
+
 app.listen(process.env.PORT, function(){
     console.log("server has started")
 })
