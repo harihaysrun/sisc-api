@@ -390,6 +390,7 @@ app.post('/reviews/:id/comment/add', async function(req,res){
                 'commentText': req.body.commentText,
                 'rating': req.body.rating,
                 'skinType': req.body.skinType,
+                'repurchase': this.repurchase,
             }
         }
     })
