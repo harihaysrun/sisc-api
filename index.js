@@ -337,7 +337,7 @@ app.post('/requested-products/:id/delete', async function(req,res){
 
 
 // add new skincare product
-app.post('/skincare-products/add', async function(req,res){
+app.post('/reviews/add', async function(req,res){
     
     const db = MongoUtil.getDB();
     let newProduct = await db.collection('review_board').insertOne({
