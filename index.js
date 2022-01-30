@@ -391,22 +391,23 @@ app.post('/reviews/:id/comment/add', async function(req,res){
                 'rating': req.body.rating,
                 'skinType': req.body.skinType,
                 'repurchase': req.body.repurchase,
+                'noOfReviews': req.body.noOfReviews
             }
         }
     })
-    await db.collection('review_board').aggregate([
-        {
-            $project:{
-                'noOfReviews': {
-                    $cond: {
-                        if: {$isArray: "$reviews"},
-                        then: { $size: "$reviews"},
-                        else: 0
-                    }
-                }
-            }
-        }
-    ])
+    // await db.collection('review_board').aggregate([
+    //     {
+    //         $project:{
+    //             'noOfReviews': {
+    //                 $cond: {
+    //                     if: {$isArray: "$reviews"},
+    //                     then: { $size: "$reviews"},
+    //                     else: 0
+    //                 }
+    //             }
+    //         }
+    //     }
+    // ])
     
     res.sendStatus(200);
 })
