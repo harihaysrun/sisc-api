@@ -361,6 +361,20 @@ app.post('/reviews/add', async function(req,res){
 
 })
 
+
+
+// get product review info
+app.get('/reviews/:id', async function(req,res){
+
+    let id = req.params.id;
+    const db = MongoUtil.getDB();
+
+    let productToDisplay = await db.collection('review_board').findOne({
+        '_id': new ObjectId(id)
+    })
+    res.json(productToDisplay);
+})
+
 app.listen(process.env.PORT, function(){
     console.log("server has started")
 })
