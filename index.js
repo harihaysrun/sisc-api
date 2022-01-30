@@ -398,10 +398,12 @@ app.post('/reviews/:id/comment/add', async function(req,res){
                 'skinType': req.body.skinType,
                 'repurchase': req.body.repurchase,
             },
+        },
+        '$set':{
             'noOfReviews': req.body.noOfReviews
         }
-    },
-    // {
+    }
+    // ,{
     //     '$set':{
     //         'noOfReviews': req.body.noOfReviews
     //     }
