@@ -375,6 +375,26 @@ app.get('/reviews/:id', async function(req,res){
     res.json(productToDisplay);
 })
 
+// review comment section
+app.post('/reviews/:id/comment/add', async function(req,res){
+    let id = req.params.id;
+    const db = MongoUtil.getDB();
+
+    await db.collection('review_board').updateOne({
+        '_id': new ObjectId(id),
+    },{
+        '$push':{
+            'reviews':{
+                '_id': new ObjectId(),
+                'commentName': req.body.commentName,
+                'commentText': req.body.commentText
+            }
+        }
+    })
+    
+    res.sendStatus(200);
+})
+
 app.listen(process.env.PORT, function(){
     console.log("server has started")
 })
