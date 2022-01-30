@@ -391,7 +391,7 @@ app.post('/reviews/:id/comment/add', async function(req,res){
                 'rating': req.body.rating,
                 'skinType': req.body.skinType,
                 'repurchase': req.body.repurchase,
-                'noOfReviews': req.body.noOfReviews
+                'noOfReviews': req.body.ratings
             }
         }
     })
