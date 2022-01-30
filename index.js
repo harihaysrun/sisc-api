@@ -387,7 +387,9 @@ app.post('/reviews/:id/comment/add', async function(req,res){
             'reviews':{
                 '_id': new ObjectId(),
                 'commentName': req.body.commentName,
-                'commentText': req.body.commentText
+                'commentText': req.body.commentText,
+                'rating': this.rating,
+                'skinType': this.skinType,
             }
         }
     })
