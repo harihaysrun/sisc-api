@@ -134,7 +134,7 @@ app.patch('/skincare-products/:id', async function(req,res){
         '_id': new ObjectId(id),
     },{
         '$set':{
-            // 'listingType': req.body.listingType,
+            'posterName': req.body.posterName,
             'productCondition': req.body.productCondition,
             'productBrand': req.body.productBrand,
             'productName': req.body.productName,
@@ -268,6 +268,7 @@ app.patch('/requested-products/:id', async function(req,res){
         '_id': new ObjectId(id),
     },{
         '$set':{
+            'posterName': req.body.posterName,
             'productCondition': req.body.productCondition,
             'productBrand': req.body.productBrand,
             'productName': req.body.productName,
