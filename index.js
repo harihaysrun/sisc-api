@@ -151,7 +151,23 @@ app.patch('/skincare-products/:id', async function(req,res){
             'skinType': req.body.skinType,
             'skinConcerns': req.body.skinConcerns,
             'productVegan': req.body.productVegan,
-            'productCrueltyFree': req.body.productCrueltyFree,
+            'productCrueltyFree': req.body.productCrueltyFree
+        }
+    });
+    
+    res.sendStatus(200);
+
+})
+
+// mark as sold
+app.post('/skincare-products/:id/sold', async function(req,res){
+
+    let id = req.params.id;
+    const db = MongoUtil.getDB();
+    await db.collection('skincare_products').updateOne({
+        '_id': new ObjectId(id),
+    },{
+        '$set':{
             'markAsSold': req.body.markAsSold
         }
     });
