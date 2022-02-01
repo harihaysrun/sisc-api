@@ -49,6 +49,7 @@ app.post('/skincare-products/add', async function(req,res){
     
     const db = MongoUtil.getDB();
     let newProduct = await db.collection('skincare_products').insertOne({
+        'posterName': req.body.posterName,
         'listingType': req.body.listingType,
         'productCondition': req.body.productCondition,
         'productBrand': req.body.productBrand,
@@ -232,8 +233,7 @@ app.post('/requested-products/add', async function(req,res){
     
     const db = MongoUtil.getDB();
     let requestProduct = await db.collection('requested_products').insertOne({
-        'listingType': req.body.listingType,
-        'productCondition': req.body.productCondition,
+        'posterName': req.body.posterName,
         'productBrand': req.body.productBrand,
         'productName': req.body.productName,
         'productImage': req.body.productImage,
