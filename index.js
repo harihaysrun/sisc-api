@@ -151,7 +151,8 @@ app.patch('/skincare-products/:id', async function(req,res){
             'skinType': req.body.skinType,
             'skinConcerns': req.body.skinConcerns,
             'productVegan': req.body.productVegan,
-            'productCrueltyFree': req.body.productCrueltyFree
+            'productCrueltyFree': req.body.productCrueltyFree,
+            'markAsSold': req.body.markAsSold
         }
     });
     
