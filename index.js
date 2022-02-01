@@ -411,9 +411,11 @@ app.post('/reviews/:id/comment/add', async function(req,res){
             'reviews':{
                 '_id': new ObjectId(),
                 'commentName': req.body.commentName,
-                'commentText': req.body.commentText,
+                'age': req.body.age,
+                'ageOthers': req.body.ageOthers,
                 'rating': req.body.rating,
                 'skinType': req.body.skinType,
+                'commentText': req.body.commentText,
                 'repurchase': req.body.repurchase,
             },
         },
