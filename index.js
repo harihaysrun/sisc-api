@@ -293,7 +293,8 @@ app.patch('/requested-products/:id', async function(req,res){
             'productQuantity': req.body.productQuantity,
             'productQuantityBox': req.body.productQuantityBox,
             'productType': req.body.productType,
-            'productSize': req.body.productSize
+            'productSize': req.body.productSize,
+            'productDescription': req.body.productDescription
         }
     });
     
