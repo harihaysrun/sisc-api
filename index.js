@@ -434,7 +434,7 @@ app.post('/reviews/:id/comment/delete', async function(req,res){
         '_id': new ObjectId(id),
     },{
         '$pull':{
-            'reviews':{
+            'comments':{
                 '_id': new ObjectId(commentId)
             }
         }
