@@ -314,7 +314,7 @@ app.post('/requested-products/:id/comment/add', async function(req,res){
                 '_id': new ObjectId(),
                 'commentName': req.body.commentName,
                 'commentText': req.body.commentText,
-                // 'commentOffer': req.body.commentOffer
+                'commentOffer': req.body.commentOffer
             }
         }
     })
