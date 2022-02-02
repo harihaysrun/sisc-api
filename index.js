@@ -401,12 +401,6 @@ app.post('/reviews/:id/comment/add', async function(req,res){
     let id = req.params.id;
     const db = MongoUtil.getDB();
 
-    // await db.collection('review_board').insertOne({
-    //     '_id': new ObjectId(id),
-    // },{
-    //     'noOfReviews': req.body.noOfReviews
-    // })
-
     await db.collection('review_board').updateOne({
         '_id': new ObjectId(id),
     },{
@@ -425,29 +419,30 @@ app.post('/reviews/:id/comment/add', async function(req,res){
         '$set':{
             'noOfReviews': req.body.noOfReviews
         }
-    }
-    // ,{
-    //     '$set':{
-    //         'noOfReviews': req.body.noOfReviews
-    //     }
-    // }
-    )
-    // await db.collection('review_board').aggregate([
-    //     {
-    //         $project:{
-    //             'noOfReviews': {
-    //                 $cond: {
-    //                     if: {$isArray: "$reviews"},
-    //                     then: { $size: "$reviews"},
-    //                     else: 0
-    //                 }
-    //             }
-    //         }
-    //     }
-    // ])
+    })
     
     res.sendStatus(200);
 })
+
+
+// delete comment
+app.post('/reviews/:id/comment/delete', async function(req,res){
+    let id = req.params.id;
+    let commentId = req.body.commentId;
+    const db = MongoUtil.getDB();
+    await db.collection('review_board').updateOne({
+        '_id': new ObjectId(id),
+    },{
+        '$pull':{
+            'comments':{
+                '_id': new ObjectId(commentId)
+            }
+        }
+    })
+    
+    res.sendStatus(200);
+})
+
 
 app.listen(process.env.PORT, function(){
     console.log("server has started")
