@@ -258,7 +258,7 @@ app.post('/requested-products/add', async function(req,res){
         'productQuantityBox': req.body.productQuantityBox,
         'productType': req.body.productType,
         'productSize': req.body.productSize,
-        // 'productDescription': req.body.productDescription
+        'productDescription': req.body.productDescription
     });
 
     res.json(requestProduct.ops);
