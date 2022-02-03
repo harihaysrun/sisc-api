@@ -437,6 +437,9 @@ app.post('/reviews/:id/comment/delete', async function(req,res){
             'reviews':{
                 '_id': new ObjectId(commentId)
             }
+        },
+        '$set':{
+            'noOfReviews': req.body.noOfReviews
         }
     })
     
