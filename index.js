@@ -159,22 +159,22 @@ app.patch('/skincare-products/:id', async function(req,res){
 
 })
 
-// mark as sold
-app.post('/skincare-products/:id/sold', async function(req,res){
+// // mark as sold
+// app.post('/skincare-products/:id/sold', async function(req,res){
 
-    let id = req.params.id;
-    const db = MongoUtil.getDB();
-    await db.collection('skincare_products').updateOne({
-        '_id': new ObjectId(id),
-    },{
-        '$set':{
-            'markAsSold': req.body.markAsSold
-        }
-    });
+//     let id = req.params.id;
+//     const db = MongoUtil.getDB();
+//     await db.collection('skincare_products').updateOne({
+//         '_id': new ObjectId(id),
+//     },{
+//         '$set':{
+//             'markAsSold': req.body.markAsSold
+//         }
+//     });
     
-    res.sendStatus(200);
+//     res.sendStatus(200);
 
-})
+// })
 
 // delete post
 app.post('/skincare-products/:id/delete', async function(req,res){
