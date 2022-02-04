@@ -43,6 +43,8 @@ app.get('/skincare-products', async function(req,res){
     res.json(skincareProducts);
 })
 
+console.log("hello")
+
 
 // add new skincare product
 app.post('/skincare-products/add', async function(req,res){
