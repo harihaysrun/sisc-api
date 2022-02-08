@@ -31,10 +31,6 @@ async function getDBname(){
 
 getDBname();
 
-app.get('/', function(req,res){
-    // res.send('hello there')
-    res.render('index');
-})
 
 // get list of skincare products
 app.get('/skincare-products', async function(req,res){
