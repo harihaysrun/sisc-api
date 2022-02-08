@@ -206,16 +206,16 @@ app.post('/search', async function(req,res){
                 {'productCrueltyFree': req.body.productCrueltyFree},
                 ]
     },{
-            'productBrand':1,
-            'productName':1,
-            'productCondition':1,
-            'productCategory':1,
-            'productType': 1,
-            'productPrice':1,
-            'productPriceDollars':1,
-            'skinType': 1,
-            'productVegan': 1,
-            'productCrueltyFree': 1
+            'productBrand.$':1,
+            'productName.$':1,
+            'productCondition.$':1,
+            'productCategory.$':1,
+            'productType.$': 1,
+            'productPrice.$':1,
+            'productPriceDollars.$':1,
+            'skinType.$': 1,
+            'productVegan.$': 1,
+            'productCrueltyFree.$': 1
     }).toArray();
 
     res.json(search);
