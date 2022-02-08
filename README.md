@@ -26,7 +26,7 @@ SI(S)C is actually inspired by Carousell’s selling & ‘looking for’ system,
 Visit SI(S)C [here](https://agitated-visvesvaraya-94d773.netlify.app/)!
 
 
-Click [here](https://github.com/harihaysrun/skincare-vue) to view the codes for the Vue frontend & full project details.
+Click [here](https://github.com/harihaysrun/sisc-vue) to view the codes for the Vue frontend & full project details.
 
 
 ## Features for this API
