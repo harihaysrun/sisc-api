@@ -1,5 +1,5 @@
 # SI(S)C.sg
-![SI(S)C](/src/assets/images/readme.jpg)
+![SI(S)C](/images/readme.jpg)
 
 For some, skincare is a chore. But for some others, skincare is a hobby… a pretty expensive one. With that, comes the piles of free samples that more often than not, end up unused. What better way is there than to spread the love and pass it on to someone else who wants it?
 
