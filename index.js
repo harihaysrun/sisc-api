@@ -43,8 +43,6 @@ app.get('/skincare-products', async function(req,res){
     res.json(skincareProducts);
 })
 
-console.log("hello")
-
 
 // add new skincare product
 app.post('/skincare-products/add', async function(req,res){
@@ -137,7 +135,6 @@ app.patch('/skincare-products/:id', async function(req,res){
         '_id': new ObjectId(id),
     },{
         '$set':{
-            'datePosted': req.body.datePosted,
             'productCondition': req.body.productCondition,
             'productBrand': req.body.productBrand,
             'productName': req.body.productName,
@@ -231,7 +228,7 @@ app.get('/requested-products', async function(req,res){
     res.json(requestedProducts);
 })
 
-// request product
+// add request product
 app.post('/requested-products/add', async function(req,res){
     
     const db = MongoUtil.getDB();
@@ -273,7 +270,6 @@ app.patch('/requested-products/:id', async function(req,res){
         '_id': new ObjectId(id),
     },{
         '$set':{
-            'datePosted': req.body.datePosted,
             'productCondition': req.body.productCondition,
             'productBrand': req.body.productBrand,
             'productName': req.body.productName,
