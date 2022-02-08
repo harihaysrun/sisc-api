@@ -22,7 +22,6 @@ const MongoUtil = require('./MongoUtil');
 const {ReadPreferenceMode} = require('mongodb');
 
 const MONGO_URI = process.env.MONGO_URI;
-// console.log("MONGO_URI: " + MONGO_URI);
 
 async function getDBname(){
     await MongoUtil.connect(MONGO_URI,  "skincare_api");
