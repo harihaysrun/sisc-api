@@ -71,7 +71,7 @@ app.post('/skincare-products/add', async function(req,res){
         'productCrueltyFree': req.body.productCrueltyFree,
     });
 
-    res.json(newProduct.ops);
+    res.json(newProduct);
 
 })
 
@@ -205,15 +205,20 @@ app.post('/search', async function(req,res){
                 {'productVegan': req.body.productVegan},
                 {'productCrueltyFree': req.body.productCrueltyFree},
                 ]
+    },{
+            'productBrand':1,
+            'productName':1,
+            'productCondition':1,
+            'productCategory':1,
+            'productType': 1,
+            'productPrice':1,
+            'productPriceDollars':1,
+            'skinType': 1,
+            'productVegan': 1,
+            'productCrueltyFree': 1
     }).toArray();
 
-    // console.log(results)
     res.json(search);
-    // res.sendStatus(200);
-    
-    // const db = MongoUtil.getDB();
-    // let skincareProducts = await db.collection('skincare_products').find().toArray();
-    // res.json(skincareProducts);
 
 })
 
@@ -245,7 +250,7 @@ app.post('/requested-products/add', async function(req,res){
         'productDescription': req.body.productDescription
     });
 
-    res.json(requestProduct.ops);
+    res.json(requestProduct);
 
 })
 
@@ -361,7 +366,7 @@ app.post('/reviews/add', async function(req,res){
         'productCrueltyFree': req.body.productCrueltyFree,
     });
 
-    res.json(newProduct.ops);
+    res.json(newProduct);
 
 })
 
