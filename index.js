@@ -288,7 +288,7 @@ app.patch('/requested-products/:id', async function(req,res){
         '_id': new ObjectId(id),
     },{
         '$set':{
-            // 'posterName': req.body.posterName,
+            'datePosted': req.body.datePosted,
             'productCondition': req.body.productCondition,
             'productBrand': req.body.productBrand,
             'productName': req.body.productName,
