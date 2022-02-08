@@ -207,6 +207,7 @@ app.post('/search', async function(req,res){
                 ]
     })
     .project({
+        'productImage': 1,
         'productBrand':1,
         'productName':1,
         'productCondition':1,
