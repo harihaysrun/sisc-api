@@ -30,16 +30,16 @@ Click [here](https://github.com/harihaysrun/skincare-vue) to view the codes for 
 
 
 ## Features for this API
-1. Post/edit/delete listings & comments (CRUD), using Express API connected to a MongoDB database
+1. Post/edit/delete listings & comments
 2. Server-side search for products page (MongoDB)
 
-## Limitations & Bugs
-- Heroku's free plan will cause the API to idle after some period of inactivity but upgrading it to the base paid plan keep it awake all the time
+## Limitations
+- Heroku's free plan will cause the API to idle after some period of inactivity but upgrading it to the base paid plan keeps it awake
 
 
 ## Technologies Used
 1. Express – set up the API connected to the Mongo database
-2. Heroku – used to host the Express API
+2. Heroku – used to host the API
 4. VueJS – front end framework used to make the single page web app
 3. Axios – used to call the API endpoint
 
