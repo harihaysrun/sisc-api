@@ -1,5 +1,5 @@
 # SI(S)C.sg
-![SI(S)C](/images/readme.jpg)
+![SI(S)C](/src/assets/images/readme.jpg)
 
 For some, skincare is a chore. But for some others, skincare is a hobby… a pretty expensive one. With that, comes the piles of free samples that more often than not, end up unused. What better way is there than to spread the love and pass it on to someone else who wants it?
 
@@ -13,7 +13,7 @@ SI(S)C is actually inspired by Carousell’s selling & ‘looking for’ system,
 
 **As the site owner, I want to:**
 - build a safe community for local skincare enthusiasts
-- allow users to interact, sell, request and provide reviews(which will be especially helpful since we're all living in the same country and experiencing the same weather! Having a same factor helps people to determine whether a product might or might work for them)
+- allow users to interact, sell, request and provide reviews(which will be especially helpful since we're all living in the same country and experiencing the same weather! Having a similar factor can help people determine whether a product might or might not work for them)
 
 
 **As the end user, I want to:**
